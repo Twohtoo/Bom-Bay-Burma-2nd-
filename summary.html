@@ -1,0 +1,118 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Order Summary | Bom Bay Burma</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: linear-gradient(to bottom right, #f7faff, #e2ecf9);
+    }
+    .header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 15px 20px;
+      background-color: #002855;
+      color: white;
+    }
+    .menu {
+      font-size: 20px;
+      cursor: pointer;
+    }
+    .brand {
+      font-size: 18px;
+      font-weight: bold;
+    }
+    .container {
+      max-width: 400px;
+      margin: 50px auto;
+      background-color: white;
+      border-radius: 20px;
+      padding: 25px;
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
+      text-align: center;
+    }
+    h1 {
+      font-size: 20px;
+      font-weight: 700;
+      margin-bottom: 20px;
+      color: #002855;
+    }
+    .summary-box {
+      text-align: left;
+      font-size: 15px;
+      margin-bottom: 20px;
+    }
+    .summary-box div {
+      margin: 5px 0;
+    }
+    .total {
+      font-size: 18px;
+      font-weight: bold;
+      color: #002855;
+      margin-top: 15px;
+    }
+    .continue-btn {
+      margin-top: 20px;
+      padding: 12px 20px;
+      font-size: 16px;
+      background-color: #002855;
+      color: white;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      width: 100%;
+    }
+  </style>
+  <script>
+    function displaySummary() {
+      const category = localStorage.getItem("category") || "-";
+      const weight = localStorage.getItem("weight") || "-";
+      const temp = localStorage.getItem("temperature") || "-";
+      const pack = localStorage.getItem("packaging") || "-";
+      const pickup = localStorage.getItem("pickupAddress") || "-";
+      const delivery = localStorage.getItem("deliveryAddress") || "-";
+      const payment = localStorage.getItem("paymentMethod") || "-";
+
+      const catPrice = parseFloat(localStorage.getItem("categoryPrice")) || 0;
+      const weightPrice = parseFloat(localStorage.getItem("weightPrice")) || 0;
+      const tempPrice = parseFloat(localStorage.getItem("temperaturePrice")) || 0;
+      const packPrice = parseFloat(localStorage.getItem("packagingPrice")) || 0;
+
+      const total = catPrice + weightPrice + tempPrice + packPrice;
+
+      document.getElementById("summaryDetails").innerHTML = `
+        <div><strong>Item Type:</strong> ${category}</div>
+        <div><strong>Weight:</strong> ${weight}</div>
+        <div><strong>Temperature:</strong> ${temp}</div>
+        <div><strong>Packaging:</strong> ${pack}</div>
+        <div><strong>Pickup:</strong> ${pickup}</div>
+        <div><strong>Delivery:</strong> ${delivery}</div>
+        <div><strong>Payment:</strong> ${payment}</div>
+        <div class="total">Total to Pay: $${total.toFixed(2)}</div>
+      `;
+    }
+
+    function goToReceipt() {
+      window.location.href = "receipt.html";
+    }
+
+    window.onload = displaySummary;
+  </script>
+</head>
+<body>
+  <div class="header">
+    <div class="menu">&#9776;</div>
+    <div class="brand">Bom Bay Burma Logistic</div>
+  </div>
+  <div class="container">
+    <h1>Order Summary</h1>
+    <div id="summaryDetails" class="summary-box"></div>
+    <button class="continue-btn" onclick="goToReceipt()">Place Order</button>
+  </div>
+</body>
+</html>

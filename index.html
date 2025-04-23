@@ -1,0 +1,104 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Bom Bay Burma - Start</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: linear-gradient(to bottom right, #f6f8fc, #dbe9ff);
+      margin: 0;
+      padding: 0;
+    }
+    .header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 15px 20px;
+      background-color: #002855;
+      color: white;
+    }
+    .menu {
+      font-size: 20px;
+      cursor: pointer;
+    }
+    .brand {
+      font-size: 18px;
+      font-weight: bold;
+    }
+    .container {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: calc(100vh - 60px);
+      text-align: center;
+    }
+    .card {
+      background-color: white;
+      padding: 30px;
+      border-radius: 20px;
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+      width: 90%;
+      max-width: 400px;
+    }
+    h1 {
+      font-size: 22px;
+      color: #002855;
+      margin-bottom: 20px;
+    }
+    .option {
+      background-color: #f0f0f0;
+      border: 2px solid #002855;
+      border-radius: 10px;
+      padding: 15px;
+      margin: 15px 0;
+      font-size: 16px;
+      cursor: pointer;
+    }
+    .option:hover {
+      background-color: #dbeaff;
+    }
+    .continue-btn {
+      margin-top: 25px;
+      padding: 12px 20px;
+      font-size: 16px;
+      background-color: #002855;
+      color: white;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      width: 100%;
+    }
+  </style>
+  <script>
+    let direction = null;
+    function chooseDirection(value) {
+      direction = value;
+      localStorage.setItem("direction", value);
+    }
+    function goNext() {
+      if (direction) {
+        window.location.href = "category.html";
+      } else {
+        alert("Please choose a route first.");
+      }
+    }
+  </script>
+</head>
+<body>
+  <div class="header">
+    <div class="menu">&#9776;</div>
+    <div class="brand">Bom Bay Burma Logistic</div>
+  </div>
+  <div class="container">
+    <div class="card">
+      <h1>Where would you like to send from?</h1>
+      <div class="option" onclick="chooseDirection('Myanmar to Singapore')">Myanmar to Singapore</div>
+      <div class="option" onclick="chooseDirection('Singapore to Myanmar')">Singapore to Myanmar</div>
+      <button class="continue-btn" onclick="goNext()">Continue</button>
+    </div>
+  </div>
+</body>
+</html>

@@ -1,0 +1,140 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Bom Bay Burma - Pickup Address</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: linear-gradient(to bottom right, #f6f8fc, #dbe9ff);
+      margin: 0;
+      padding: 0;
+    }
+    .header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 15px 20px;
+      background-color: #002855;
+      color: white;
+    }
+    .menu {
+      font-size: 20px;
+      cursor: pointer;
+    }
+    .brand {
+      font-size: 18px;
+      font-weight: bold;
+    }
+    .container {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: calc(100vh - 60px);
+      text-align: center;
+    }
+    .card {
+      background-color: white;
+      padding: 25px;
+      border-radius: 20px;
+      box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+      width: 90%;
+      max-width: 400px;
+    }
+    h1 {
+      font-size: 22px;
+      color: #002855;
+      margin-bottom: 15px;
+    }
+    .form-group {
+      text-align: left;
+      margin-bottom: 15px;
+    }
+    .form-group label {
+      display: block;
+      font-size: 14px;
+      margin-bottom: 5px;
+      color: #002855;
+    }
+    .form-group input {
+      width: 100%;
+      padding: 10px;
+      font-size: 14px;
+      border-radius: 6px;
+      border: 1px solid #ccc;
+    }
+    .nav-buttons {
+      display: flex;
+      justify-content: space-between;
+      margin-top: 20px;
+    }
+    .nav-buttons a {
+      text-decoration: none;
+    }
+    .back, .continue {
+      padding: 10px 20px;
+      border-radius: 8px;
+      font-size: 16px;
+      cursor: pointer;
+      border: none;
+    }
+    .back {
+      background-color: #ccc;
+    }
+    .continue {
+      background-color: #002855;
+      color: white;
+    }
+  </style>
+  <script>
+    function savePickupInfo() {
+      const name = document.getElementById("sender-name").value;
+      const phone = document.getElementById("contact-number").value;
+      const address = document.getElementById("pickup-address").value;
+      const timing = document.getElementById("pickup-time").value;
+
+      localStorage.setItem("pickupName", name);
+      localStorage.setItem("pickupPhone", phone);
+      localStorage.setItem("pickupAddress", address);
+      localStorage.setItem("pickupTime", timing);
+
+      window.location.href = "delivery.html";
+    }
+  </script>
+</head>
+<body>
+  <div class="header">
+    <div class="menu">&#9776;</div>
+    <div class="brand">Bom Bay Burma Logistic</div>
+  </div>
+  <div class="container">
+    <div class="card">
+      <h1>Pickup Address</h1>
+      <form>
+        <div class="form-group">
+          <label for="sender-name">Name of Sender</label>
+          <input type="text" id="sender-name" required>
+        </div>
+        <div class="form-group">
+          <label for="contact-number">Contact Number</label>
+          <input type="tel" id="contact-number" required>
+        </div>
+        <div class="form-group">
+          <label for="pickup-address">Full Pickup Address</label>
+          <input type="text" id="pickup-address" required>
+        </div>
+        <div class="form-group">
+          <label for="pickup-time">Preferred Pickup Timing</label>
+          <input type="text" id="pickup-time" placeholder="e.g. 10am - 1pm">
+        </div>
+      </form>
+      <div class="nav-buttons">
+        <a href="packaging.html"><button class="back" type="button">Back</button></a>
+        <button class="continue" type="button" onclick="savePickupInfo()">Continue</button>
+      </div>
+    </div>
+  </div>
+</body>
+</html>

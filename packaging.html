@@ -1,0 +1,126 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Bom Bay Burma - Packaging</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: linear-gradient(to bottom right, #f6f8fc, #dbe9ff);
+      margin: 0;
+      padding: 0;
+    }
+    .header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 15px 20px;
+      background-color: #002855;
+      color: white;
+    }
+    .menu {
+      font-size: 20px;
+      cursor: pointer;
+    }
+    .brand {
+      font-size: 18px;
+      font-weight: bold;
+    }
+    .container {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: calc(100vh - 60px);
+      text-align: center;
+    }
+    .card {
+      background-color: white;
+      padding: 25px;
+      border-radius: 20px;
+      box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+      width: 90%;
+      max-width: 400px;
+    }
+    h1 {
+      font-size: 22px;
+      color: #002855;
+      margin-bottom: 20px;
+    }
+    label.pack-option {
+      display: block;
+      background-color: #f0f0f0;
+      border: 2px solid #002855;
+      border-radius: 10px;
+      padding: 12px;
+      margin: 10px 0;
+      font-size: 16px;
+      text-align: left;
+      cursor: pointer;
+    }
+    input[type="radio"] {
+      margin-right: 10px;
+    }
+    .nav-buttons {
+      display: flex;
+      justify-content: space-between;
+      margin-top: 25px;
+    }
+    .nav-buttons a {
+      text-decoration: none;
+    }
+    .back, .continue {
+      padding: 10px 20px;
+      border-radius: 8px;
+      font-size: 16px;
+      cursor: pointer;
+      border: none;
+    }
+    .back {
+      background-color: #ccc;
+    }
+    .continue {
+      background-color: #002855;
+      color: white;
+    }
+  </style>
+  <script>
+    function savePackaging() {
+      const selected = document.querySelector('input[name="packaging"]:checked');
+      if (selected) {
+        let label = selected.value;
+        let price = 0;
+        if (label === "Normal") price = 3;
+        else if (label === "Fragile") price = 5;
+
+        localStorage.setItem("packaging", label);
+        localStorage.setItem("packagingPrice", price.toString());
+        window.location.href = "pickup.html";
+      } else {
+        alert("Please select a packaging option.");
+      }
+    }
+  </script>
+</head>
+<body>
+  <div class="header">
+    <div class="menu">&#9776;</div>
+    <div class="brand">Bom Bay Burma Logistic</div>
+  </div>
+  <div class="container">
+    <div class="card">
+      <h1>Select Packaging Option</h1>
+      <form>
+        <label class="pack-option"><input type="radio" name="packaging" value="Normal">Normal Packaging - $3</label>
+        <label class="pack-option"><input type="radio" name="packaging" value="None">No Packaging - $0</label>
+        <label class="pack-option"><input type="radio" name="packaging" value="Fragile">Fragile with Bubble Wrap - $5</label>
+      </form>
+      <div class="nav-buttons">
+        <a href="temperature.html"><button class="back" type="button">Back</button></a>
+        <button class="continue" type="button" onclick="savePackaging()">Continue</button>
+      </div>
+    </div>
+  </div>
+</body>
+</html>

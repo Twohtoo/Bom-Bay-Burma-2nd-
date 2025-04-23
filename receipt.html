@@ -1,0 +1,85 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Receipt | Bom Bay Burma</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: linear-gradient(to bottom right, #f7faff, #e2ecf9);
+    }
+    .header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 15px 20px;
+      background-color: #002855;
+      color: white;
+    }
+    .menu {
+      font-size: 20px;
+      cursor: pointer;
+    }
+    .brand {
+      font-size: 18px;
+      font-weight: bold;
+    }
+    .container {
+      max-width: 400px;
+      margin: 50px auto;
+      background-color: white;
+      border-radius: 20px;
+      padding: 25px;
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
+      text-align: center;
+    }
+    h1 {
+      font-size: 20px;
+      font-weight: 700;
+      margin-bottom: 10px;
+      color: #002855;
+    }
+    p {
+      font-size: 14px;
+      color: #333;
+      margin: 10px 0;
+    }
+    .highlight {
+      font-weight: bold;
+      color: #002855;
+    }
+    .email-note {
+      font-size: 13px;
+      margin-top: 15px;
+      color: #666;
+    }
+    .done-btn {
+      margin-top: 20px;
+      padding: 10px 20px;
+      font-size: 16px;
+      background-color: #002855;
+      color: white;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      width: 100%;
+    }
+  </style>
+</head>
+<body>
+  <div class="header">
+    <div class="menu">&#9776;</div>
+    <div class="brand">Bom Bay Burma Logistic</div>
+  </div>
+  <div class="container">
+    <h1>Thank You!</h1>
+    <p>Your order has been successfully placed.</p>
+    <p class="highlight">Our team will contact you shortly.</p>
+    <p class="email-note">A confirmation email has been sent. If you don't see it, please check your spam folder.</p>
+    <button class="done-btn" onclick="window.location.href='index.html'">Done</button>
+  </div>
+</body>
+</html>
