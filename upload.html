@@ -1,0 +1,153 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Upload Your Items | Bom Bay Burma</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: linear-gradient(to bottom right, #f6f8fc, #dbe9ff);
+      margin: 0;
+      padding: 0;
+    }
+    .header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 15px 20px;
+      background-color: #002855;
+      color: white;
+    }
+    .menu {
+      font-size: 20px;
+      cursor: pointer;
+    }
+    .brand {
+      font-size: 18px;
+      font-weight: bold;
+    }
+    .container {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: calc(100vh - 60px);
+      text-align: center;
+    }
+    .card {
+      background-color: white;
+      padding: 25px;
+      border-radius: 20px;
+      box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+      width: 90%;
+      max-width: 400px;
+    }
+    h1 {
+      font-size: 22px;
+      color: #002855;
+      margin-bottom: 15px;
+    }
+    p {
+      font-size: 14px;
+      color: #444;
+    }
+    .upload-box {
+      margin: 20px 0;
+      padding: 30px;
+      border: 2px dashed #bbb;
+      border-radius: 10px;
+      background-color: #f9f9f9;
+      cursor: pointer;
+    }
+    .upload-box input {
+      display: none;
+    }
+    .choose-btn {
+      display: inline-block;
+      margin-top: 10px;
+      padding: 8px 16px;
+      background-color: #002855;
+      color: white;
+      border: none;
+      border-radius: 8px;
+      font-size: 14px;
+      cursor: pointer;
+    }
+    .note {
+      font-size: 13px;
+      margin-top: 10px;
+      color: #555;
+    }
+    .nav-buttons {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      margin-top: 20px;
+    }
+    .back, .continue, .save {
+      padding: 10px 20px;
+      border-radius: 8px;
+      font-size: 16px;
+      cursor: pointer;
+      border: none;
+      margin-top: 10px;
+    }
+    .back {
+      background-color: #ccc;
+    }
+    .continue {
+      background-color: #002855;
+      color: white;
+    }
+    .save {
+      background-color: #f0ad4e;
+      color: white;
+    }
+  </style>
+  <script>
+    function saveUploadDraft() {
+      const note = document.getElementById("upload-note").value;
+      localStorage.setItem("uploadNote", note);
+      alert("Draft saved successfully!");
+    }
+
+    function continueUpload() {
+      const note = document.getElementById("upload-note").value;
+      localStorage.setItem("uploadNote", note);
+      window.location.href = "payment.html";
+    }
+
+    function loadDraft() {
+      document.getElementById("upload-note").value = localStorage.getItem("uploadNote") || "";
+    }
+
+    window.onload = loadDraft;
+  </script>
+</head>
+<body>
+  <div class="header">
+    <div class="menu">&#9776;</div>
+    <div class="brand">Bom Bay Burma Logistic</div>
+  </div>
+  <div class="container">
+    <div class="card">
+      <h1>Upload Your Items</h1>
+      <p>Please upload photos or documents for the items you wish to send.</p>
+      <div class="upload-box">
+        <label for="file-upload">
+          <div>Drag and drop files here</div>
+          <button class="choose-btn">Choose Files</button>
+          <input type="file" id="file-upload" multiple />
+        </label>
+      </div>
+      <textarea id="upload-note" rows="2" style="width:100%; padding:10px; border-radius:8px;" placeholder="Just checking pricing? I don't have the items yet..."></textarea>
+      <div class="nav-buttons">
+        <a href="delivery.html"><button class="back" type="button">Back</button></a>
+        <button class="save" type="button" onclick="saveUploadDraft()">Save Draft</button>
+        <button class="continue" type="button" onclick="continueUpload()">Continue</button>
+      </div>
+    </div>
+  </div>
+</body>
+</html>
